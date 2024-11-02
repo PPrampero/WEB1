@@ -1,3 +1,5 @@
+Base: lpb
+
 create tabel cliente(
 codigo serial primary key,
 nome varchar(100),
