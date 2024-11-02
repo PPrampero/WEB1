@@ -33,11 +33,11 @@ app.post('/login', async function (req, res) {
        
         cliente = await dao.login(login, senha)
         if (cliente != null) {
-            session.usuario = cliente
+            req.session.usuario = cliente
             res.send(cliente.nome+" logado com sucesso.")
         }
         else {
-            session.usuario=null
+            req.session.usuario=null
             res.send("Erro no login/senha")
         }
     }
