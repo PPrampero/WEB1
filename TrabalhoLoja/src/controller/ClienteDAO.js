@@ -29,8 +29,6 @@ module.exports = class ClienteDAO {
                 obj.codigo=tabela.rows[0].codigo
                 obj.nome=tabela.rows[0].nome
                 obj.login = tabela.rows[0].login     
-                console.log(obj.nome+"  "+obj.login)
-                
             }
             return obj
         }
