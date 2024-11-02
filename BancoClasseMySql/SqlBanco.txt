@@ -1,0 +1,9 @@
+create tabel cliente(
+codigo serial primary key,
+nome varchar(100),
+idade int);
+
+create table cliente2(
+    codigo int AUTO_INCREMENT not null PRIMARY KEY,
+    nome varchar(100),
+    idade int)
