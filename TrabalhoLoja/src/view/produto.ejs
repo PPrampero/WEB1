@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <% for(i=0;i<tabela.rowCount;i++){ %>
+    <form action="/comprar" method="post">
+        <input type="text" name="txtCodigo" value="<%= tabela.rows[i].codigo %>" hidden />
+        <input type="text" name="txtDescricao" value="<%= tabela.rows[i].descricao %>" hidden />
+        <input type="text" name="txtPreco" value="<%= tabela.rows[i].preco %>" hidden />
+        <p align="center">
+            <img src="/imagem/<%= tabela.rows[i].imagem %>" width="200" /> <br/>
+            <font size="20"> <%=tabela.rows[i].descricao%> </font> <br/>
+            <font size="8"> Preço R$ <%=tabela.rows[i].preco%> </font> <br/>
+            Quantidade:<input type="text" name="txtQtde" value="1" /> <br/>
+            <input type="submit" name="b1" value="Comprar" />
+        </p>
+    </form>
+    <% } %>
+</body>
+</html>

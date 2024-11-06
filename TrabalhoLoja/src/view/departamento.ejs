@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <%
-      for(i=0;i<tabela.rowCount;i++) {
-     %>
-        <a href="/listarProduto/<%=tabela.rows[i].codigo %>" 
-            target="principal">
-            <h1> <%=tabela.rows[i].nome %> </h1>
-    </a>
-<%
-      }
-%>
 
+<body>
+    <% for(i=0;i<tabela.rowCount;i++){ %>
+        <a href="/listarProduto/<%=tabela.rows[i].codigo%>"
+            target="principal">
+            <h2>
+                <%= tabela.rows[i].nome %>
+            </h2>
+        </a>
+        <% } %>
 </body>
+
 </html>

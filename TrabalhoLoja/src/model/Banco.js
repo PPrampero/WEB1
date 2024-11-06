@@ -1,6 +1,6 @@
 const { Client } = require('pg');
 
-module.exports=class Banco {
+class Banco {
   static conexao;
   static init() {
     try {
@@ -18,3 +18,4 @@ module.exports=class Banco {
     }
   }
 }
+module.exports = Banco;
