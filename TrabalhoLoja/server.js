@@ -21,9 +21,20 @@ app.use(session({
     resave: true,
     saveUninitialized:true
 }));
+//////Funções MidleWare
+app.get("/finalizar", function (req, res, next) {
+    if (req.session.usuario != null) {
+        next()
+    }
+    else {
+        res.redirect("template/login.html")
+    }
+})
 
+//Tratamento de rotas
 app.get('/', function (req, res) {
-    res.sendFile(__dirname+"/index.html")
+    res.sendFile(__dirname + "/index.html")
+
 })
 
 app.post("/login", async function (req, res) {
@@ -34,7 +45,7 @@ app.post("/login", async function (req, res) {
     try {
         cliente = await dao.login(login, senha)
         if (cliente != null) {
-            session.usuario = cliente
+            req.session.usuario = cliente
             res.send(cliente.nome+" logado com sucesso.")
         }
         else {
@@ -86,13 +97,19 @@ app.get('/mostrarCarrinho', function (req, res) {
     
     try {
         let v = req.session.carrinho
-        let s=""
+        /*let s=""
         for (i = 0; i < v.length; i++){
             s=s+v[i].descricao+"\n"
         }
         console.log(s)
         res.send("Comprado")
+        */
+        res.render("carrinho", {carrinho: v })
     }catch(erro){console.log(erro)}
+})
+
+app.get("/finalizar", function (req, res) {
+    res.send("Compra finalizada")
 })
 
 app.listen(3000, function (erro) {
