@@ -6,7 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <% for(i=0;i<tabela.rowCount;i++){ %>
+    <% for(i=0;i<tabela.rowCount;i++){ 
+        //pula quando o campo do banco está null
+        if((!tabela.rows[i].preco) ||(!tabela.rows[i].qtde))
+            continue
+        %>
     <form action="/comprar" method="post">
         <input type="text" name="txtCodigo" value="<%= tabela.rows[i].codigo %>" hidden />
         <input type="text" name="txtDescricao" value="<%= tabela.rows[i].descricao %>" hidden />
